@@ -1,29 +1,9 @@
-# S3uploader
+=======
+s3uploader
+==========
 
-TODO: Write a gem description
-
-## Installation
-
-Add this line to your application's Gemfile:
-
-    gem 's3uploader'
-
-And then execute:
-
-    $ bundle
+Rails gem to add convenience methods and controller actions for directly uploading to S3
 
 Or install it yourself as:
 
     $ gem install s3uploader
-
-## Usage
-
-TODO: Write usage instructions here
-
-## Contributing
-
-1. Fork it
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
