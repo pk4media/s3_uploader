@@ -58,6 +58,9 @@ If you want to use the jQuery File Upload library, here's an example of how you 
 
     <div class="video-upload"></div>
 
+    <%= content_tag :input, '', id: 'video-upload', style: 'display: none;', data: { 'upload-url' => 
+    	polymorphic_path([:upload, :examples]) } %>
+
 ### app/assets/javascripts/examples.js
 
 	$().ready(function() {
@@ -68,7 +71,7 @@ If you want to use the jQuery File Upload library, here's an example of how you 
 	    dataType: 'xml',
 	    add: function (event, data) {
 	      $.ajax({
-	        url: $('#video-upload').data('add-video-url'),
+	        url: $('#video-upload').data('upload-url'),
 	        type: 'POST',
 	        dataType: 'json',
 	        async: false,
