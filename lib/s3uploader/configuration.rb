@@ -9,6 +9,7 @@ module S3Uploader
   end
 
   class Configuration
+    attr_accessor :aws_id
     attr_accessor :access_key
     attr_accessor :bucket
     attr_accessor :expiration
@@ -16,6 +17,7 @@ module S3Uploader
     attr_accessor :success_action_status
 
     def initialize
+      @aws_id = nil
       @access_key = ENV['AWS_ACCESS_KEY']
       @bucket = nil
       @expiration = 3.minutes
