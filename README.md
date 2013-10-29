@@ -18,6 +18,10 @@ Setup your configuration initializer
 	  c.bucket = ""              # default bucket
 	end
 
+Including the S3Uploader::Upload module within any controller will add a few methods:
+	* s3_policy(key_starts_with: "uploads/")
+	* s3_signature(s3_policy)
+
 If you want to use the jQuery File Upload library, here's an example of how you would implement it.
 
 ### Gemfile
