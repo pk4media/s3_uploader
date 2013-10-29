@@ -4,8 +4,8 @@ module S3Uploader
   end
 
   def self.config
-    self.config ||= Config.new
-    yield config
+    self.configuration ||= Config.new
+    yield configuration
   end
 
   class Config
