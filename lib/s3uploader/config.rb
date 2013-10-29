@@ -3,7 +3,7 @@ module S3Uploader
     attr_accessor :config
   end
 
-  def self.configure
+  def self.config
     self.config ||= Config.new
     yield config
   end
