@@ -1,16 +1,19 @@
 module S3Uploader
   class << self
-    attr_accessor :config
+    attr_accessor :configuration
   end
 
-  def self.config
-    self.configuration ||= Config.new
+  def self.configure
+    self.configuration ||= Configuration.new
     yield configuration
   end
 
-  class Config
+  class Configuration
     attr_accessor :access_key
     attr_accessor :bucket
+    attr_accessor :expiration
+    attr_accessor :content_type_starts_with
+    attr_accessor :success_action_status
 
     def initialize
       @access_key = ENV['AWS_ACCESS_KEY']
