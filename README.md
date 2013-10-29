@@ -20,15 +20,15 @@ Setup your configuration initializer
 
 If you want to use the jQuery File Upload library, here's an example of how you would implement it.
 
-# Gemfile
+### Gemfile
 
 	gem 'jquery-rails'
-	
+
 	group :assets do
 		gem 'jquery-fileupload-rails'
 	end
 
-# app/controllers/examples_controller.rb
+### app/controllers/examples_controller.rb
 
 	class ExamplesController < ApplicationController
 		include S3Uploader::Upload
@@ -54,11 +54,11 @@ If you want to use the jQuery File Upload library, here's an example of how you 
 		end
 	end
 
-# app/views/examples/new.html.erb
+### app/views/examples/new.html.erb
 
     <div class="video-upload"></div>
 
-# app/assets/javascripts/examples.js
+### app/assets/javascripts/examples.js
 
 	$().ready(function() {
 
