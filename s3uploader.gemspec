@@ -8,8 +8,8 @@ Gem::Specification.new do |spec|
   spec.version       = S3uploader::VERSION
   spec.authors       = ["Stan Dyro", "Kaushik Sanyal"]
   spec.email         = ["stand@pk4media.com"]
-  spec.description   = %q{TODO: Write a gem description}
-  spec.summary       = %q{TODO: Write a gem summary}
+  spec.description   = "S3 signing methods for controller"
+  spec.summary       = "S3 signing methods for controller"
   spec.homepage      = ""
   spec.license       = "MIT"
 
