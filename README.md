@@ -10,7 +10,7 @@ Or install it yourself as:
 
 Setup your configuration initializer
 
-# config/initializers/s3_uploader.rb
+### config/initializers/s3_uploader.rb
 
 	S3Uploader.config do |c|
 	  c.aws_id = ""              # your access key id
@@ -85,7 +85,7 @@ If you want to use the jQuery File Upload library, here's an example of how you 
 	              value: retdata.key
 	            }, {
 	              name: 'AWSAccessKeyId',
-	              value: 'AKIAIB2T5WJWVSG63VPA'
+	              value: retdata.aws_key
 	            }, {
 	              name: 'acl',
 	              value: 'private'
