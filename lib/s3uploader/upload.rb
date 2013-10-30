@@ -15,7 +15,7 @@ module S3Uploader
       unless bucket.nil?
         conditions << {bucket: bucket}
       else
-        conditions << {bucket: S3Uploader.configuration.bucket}
+        conditions << {bucket: S3Uploader.config.bucket}
       end
 
       unless max_file_size.nil?
@@ -23,7 +23,7 @@ module S3Uploader
       end
       
       policy = {
-        expiration: S3Uploader.configuration.expiration.from_now.utc.xmlschema,
+        expiration: S3Uploader.config.expiration.from_now.utc.xmlschema,
         conditions: conditions 
       }
 
@@ -33,7 +33,11 @@ module S3Uploader
     end
 
     def s3_signature(s3_policy)
-      Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha1'), S3Uploader.configuration.access_key, s3_policy)).gsub(/\n/, '')
+      Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha1'), S3Uploader.config.access_key, s3_policy)).gsub(/\n/, '')
+    end
+
+    def s3_key
+      S3Uploader.config.aws_id
     end
   end
 end

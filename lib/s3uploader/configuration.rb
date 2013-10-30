@@ -1,14 +1,14 @@
 module S3Uploader
   class << self
-    attr_accessor :configuration
+    attr_accessor :config
   end
 
   def self.configure
-    self.configuration ||= Configuration.new
-    yield configuration
+    self.config ||= Configuration.new
+    yield config
   end
 
-  class Configuration
+  class Config
     attr_accessor :aws_id
     attr_accessor :access_key
     attr_accessor :bucket
