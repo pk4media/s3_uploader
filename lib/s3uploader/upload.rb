@@ -36,7 +36,7 @@ module S3Uploader
       Base64.encode64(OpenSSL::HMAC.digest(OpenSSL::Digest::Digest.new('sha1'), S3Uploader.config.access_key, s3_policy)).gsub(/\n/, '')
     end
 
-    def s3_key
+    def aws_id
       S3Uploader.config.aws_id
     end
   end
