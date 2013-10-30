@@ -1,6 +1,6 @@
 Gem::Specification.new do |spec|
   spec.name          = "s3uploader"
-  spec.version       = "0.0.4"
+  spec.version       = "0.0.5"
   spec.authors       = ["Stan Dyro", "Kaushik Sanyal"]
   spec.email         = ["stand@pk4media.com"]
   spec.description   = "S3 signing methods for controller"
