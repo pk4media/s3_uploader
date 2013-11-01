@@ -2,7 +2,7 @@ module S3Uploader
   module Upload
     extend ActiveSupport::Concern
 
-    def s3_policy(key_starts_with: key_starts_with, content_type: 'video/', max_file_size: nil, acl: 'private', success_action_status: '201', bucket: nil, add_conditions: [])
+    def s3_policy(key_starts_with=key_starts_with, content_type='video/', bucket=nil, max_file_size=nil, acl='private', success_action_status='201', add_conditions=[])
       conditions = [
         ["starts-with", "$key", key_starts_with],
         ["starts-with", "$Content-Type", content_type],
