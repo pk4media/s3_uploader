@@ -1,5 +1,5 @@
-=======
-s3_uploader
+==========
+S3Uploader
 ==========
 
 S3Uploader add convenient methods within Rails controllers to generate the policy and signature needed to directly upload files from the client to an Amazon S3 bucket. Unlike [S3 Direct Upload](https://github.com/waynehoover/s3_direct_upload‎) which is tightly coupled to the excellent jQuery File Upload library, this gem is front end agnostic and leaves handling of uploads up to the developer.
