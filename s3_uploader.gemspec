@@ -1,5 +1,5 @@
 Gem::Specification.new do |spec|
-  spec.name          = "s3uploader"
+  spec.name          = "s3_uploader"
   spec.version       = "0.0.7"
   spec.authors       = ["Stan Dyro", "Kaushik Sanyal"]
   spec.email         = ["stand@pk4media.com"]
