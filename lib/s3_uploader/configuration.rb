@@ -18,7 +18,7 @@ module S3Uploader
 
     def initialize
       @aws_id = nil
-      @access_key = ENV['AWS_ACCESS_KEY']
+      @access_key = nil
       @bucket = nil
       @expiration = 3.minutes
       @content_type_starts_with = 'jpg'

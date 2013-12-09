@@ -1,5 +1,8 @@
 module S3Uploader
 
+  # Read how to format S3 policy doc:
+  # http://docs.aws.amazon.com/AmazonS3/latest/dev/HTTPPOSTForms.html
+
   ##
   # Adds methods to controllers
   #
@@ -14,32 +17,22 @@ module S3Uploader
     # [key_starts_with (String)] - Directory in S3 directory you want file to end up in "/video/2012-10-11"
     # [private (Boolean)] - Whether upload is private
     # [conditions (Array)] - Additional conditions to set for acceptable uploads
-    # 
+    #
     # == Returns
     #
     # [string] - Base64 representation of policy
     #
-    def s3_policy(key_starts_with=key_starts_with, content_type='video/', bucket=nil, max_file_size=nil, acl='private', success_action_status='201', conditions=[])
+    def s3_policy(key_starts_with: '', bucket: S3Uploader.config.bucket, acl: 'private', success_action_status: 201, conditions: [])
       conditions += [
         ["starts-with", "$key", key_starts_with],
-        ["starts-with", "$Content-Type", content_type],
         {acl: acl},
-        {success_action_status: success_action_status}
+        {success_action_status: success_action_status.to_s},
+        {bucket: bucket}
       ]
 
-      unless bucket.nil?
-        conditions << {bucket: bucket}
-      else
-        conditions << {bucket: S3Uploader.config.bucket}
-      end
-
-      unless max_file_size.nil?
-        conditions << ["content-length-range", 0, max_file_size]
-      end
-      
       policy = {
         expiration: S3Uploader.config.expiration.from_now.utc.xmlschema,
-        conditions: conditions 
+        conditions: conditions
       }
 
       encoded_policy = Base64.encode64(policy.to_json).gsub(/\n/, '')
@@ -91,7 +84,7 @@ module S3Uploader
     def s3_json(conditions)
       self.s3_policy()
 
-      json = [
+      return [
         {
           name: 'key',
           value: retdata.key
