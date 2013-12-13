@@ -23,7 +23,7 @@ module S3Uploader
     # [string] - Base64 representation of policy
     #
     def s3_policy(key_starts_with: '', bucket: nil, acl: 'private', success_action_status: 201, conditions: [])
-      bucket ||= self.config.bucket
+      bucket ||= S3Uploader.config.bucket
 
       raise 'S3 bucket not defined' unless bucket
 
