@@ -23,16 +23,19 @@ module S3Uploader
     # [string] - Base64 representation of policy
     #
     def s3_policy(key_starts_with: '', bucket: nil, acl: 'private', success_action_status: 201, conditions: [])
-      bucket ||= (self.config.bucket || Rails.configuration.upload_bucket)
+      bucket ||= self.config.bucket
 
       raise 'S3 bucket not defined' unless bucket
 
-      pp conditions += [
-        ["starts-with", "$key", key_starts_with],
+      conditions += [
         {acl: acl},
         {success_action_status: success_action_status.to_s},
         {bucket: bucket}
       ]
+
+      unless key_starts_with.blank?
+        conditions += [["starts-with", "$key", key_starts_with]]
+      end
 
       policy = {
         expiration: S3Uploader.config.expiration.from_now.utc.xmlschema,
